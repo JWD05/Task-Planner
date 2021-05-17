@@ -7,13 +7,14 @@
 .grid_main_container {
     display:grid;
     width: 90%;
-    height: 90%;
-    grid-template: 58% 42% / 33% 34% 33%;
+    height: 99%;
+    grid-template: 45% 55% / 33% 34% 33%;
 }
 
 .grid_form_container {
     border:1px solid brown;
     width: 90%;
+    font-size: medium;
     grid-area: 1 / 1 / 2 / 4;
     margin: auto;
     padding: 2%;
@@ -23,10 +24,14 @@
 .grid_viewcards_container {
     border:1px solid brown;
     width: 90%;
+    height: auto;
     margin:2rem auto;
+    font-size:small;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     grid-area: 2 / 1 / 3 / 4;
+    
     
 }
 
