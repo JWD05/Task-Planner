@@ -42,9 +42,14 @@ legend {
     display: flex;
     justify-content:space-around;
     align-items: flex-end;
+    margin-top: 4px;
     box-shadow: 1px;
 }
 
 .form_buttons {
     
+}
+
+.list-group-item {
+    margin: 1px;
 }
