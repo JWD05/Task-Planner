@@ -24,6 +24,7 @@
 .grid_viewcards_container {
     border:1px solid brown;
     width: 90%;
+    padding: 2%;
     height: auto;
     margin:2rem auto;
     font-size:small;
