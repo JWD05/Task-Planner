@@ -20,23 +20,23 @@
             <fieldset>
               <legend>Task Assignment Form</legend>
               <div class="mb-3">
-                <label for="nameCreator" class="form-label">Name</label>
+                <label for="nameCreator" class="form-label">Name</label><span id="errMsg"></span>
                 <input type="text" id="nameCreator" class="form-control" placeholder="Enter name">
               </div>
               <div class="mb-3">
-                <label for="taskDescrip" class="form-label">Task description</label>
+                <label for="taskDescrip" class="form-label">Task description</label><span id="errMsg1"></span>
                 <input type="text" id="taskDescrip" class="form-control" placeholder="Enter task description">
               </div>              
               <div class="mb-3">                  
-                <label for="assigneeName" class="form-label">Assigned to</label>
+                <label for="assigneeName" class="form-label">Assigned to</label><span id="errMsg2"></span>
                 <input type="text" id="assigneeName" class="form-control" placeholder="Enter assignee">
               </div>
               <div class="mb-3">
-                <label for="dueDateInput" class="form-label">Due date</label>
+                <label for="dueDateInput" class="form-label">Due date</label><span id="errMsg3"></span>
                 <input type="date" id="dueDateInput" class="form-control" placeholder="Enter due date">
               </div>
               <div class="mb-3">
-                <label for="statusSelect" class="form-label">Status</label>
+                <label for="statusSelect" class="form-label">Status</label><span id="errMsg4"></span>
                 <select id="statusSelect" class="form-select">
                   <option>Select one</option>
                   <option>To Do</option>
@@ -46,8 +46,8 @@
                 </select>
               </div>
               <section class="form_buttons">
-                <button type="submit" class="btn btn-danger btn-sm shadow">Cancel</button>
-                <button type="submit" class="btn btn-primary btn-sm shadow">Save</button>
+                <button type="submit" class="btn btn-danger btn-sm shadow" id="cancelButton">Cancel</button>
+                <button type="submit" class="btn btn-primary btn-sm shadow" id="saveButton">Save</button>
               </section>
               
             </fieldset>
@@ -138,5 +138,6 @@
     <footer>
 
     </footer>
+    <script src="index.js"></script>
 </body>
 </html>
