@@ -1,3 +1,6 @@
+    const taskManager = new TaskManager();
+    console.log(taskManager.tasks);
+
     //Grabbing the html elements
     let nameCreator = document.getElementById('nameCreator');
     let taskDescrip = document.getElementById('taskDescrip');
@@ -11,14 +14,9 @@
     let errorMsg1 = document.getElementById('errMsg1');
     let errorMsg2 = document.getElementById('errMsg2');
     let errorMsg3 = document.getElementById('errMsg3');
-    let errorMsg4 = document.getElementById('errMsg4');
-    // console.log(nameCreator);
-    // console.log(taskDescrip);
-    // console.log(assigneeName);
-    // console.log(dueDateInput);
-    // console.log(statusSelect);
-    //console.log("Task Description:" + taskDescrip.value);
+    let errorMsg4 = document.getElementById('errMsg4');    
     let tdate = new Date();
+    
     //Event Handler
     function validFormFieldInput(){
         if(nameCreator.value.length < 5){
