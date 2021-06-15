@@ -1,7 +1,8 @@
-    const taskManager = new TaskManager(0);
-    console.log(taskManager.tasks);    
+    const taskManager = new TaskManager(0); //Instantiation of class TaskManager
+    console.log(taskManager.tasks);   
+    let taskHtml; //Variable for storing the task html object.
     
-    //Grabbing the html elements
+    //-----------------Grabbing the html elements--------------------
     let nameCreator = document.getElementById('nameCreator');
     let taskDescrip = document.getElementById('taskDescrip');
     let assigneeName = document.getElementById('assigneeName');
@@ -18,12 +19,16 @@
     
     let validationCounter = 0; //Counter for validations(max 5)
     
-    //Event Triggered Function
+    //    -------------------Event Triggered Function----------------------
     function validFormFieldInput(){ 
-        let tdate = new Date();  //to obtain today's date in string
+        let tdate = new Date();  //creating date object to later obtain today's date in string format
+        let d = new Date(1623456784332);
         let bdate = new Date(dueDateInput.value); //to obtain the input date in string format.
-        console.log(`Today's date is ${tdate.getTime()}`);
-        console.log(`The date input was ${Date.parse(bdate)}`);
+        //console.log(`Today's date using tdate.getTime gives - ${tdate.getTime()}`);
+        //console.log(`tdate = new Date() gives - ${tdate}`);
+        //console.log(`The date input using Date.parse(bdate) was - ${Date.parse(bdate)}`);
+        //console.log(`bdate = new Date(dueDateInput.value) gives - ${bdate}`);
+        console.log(`The d = new Date(1623456784332) gives - ${d}`);
         if(nameCreator.value.length < 5){ //Validation of Name field entry
             nameCreator.style.border = '1px solid red';
             errorMsg.innerHTML = "    The entry should be of 5 characters or more.";
@@ -48,7 +53,8 @@
             errorMsg2.innerHTML = "";
             validationCounter += 1;
         }
-        if(dueDateInput.value == '' || Date.parse(bdate) < tdate.getTime()){ //Validation of Due date input field
+        if(dueDateInput.value == '' || Date.parse(bdate) < tdate.getTime()){ //Validation of Due date input field. 
+            //Here tdate.getTime() returns time in millisec
             dueDateInput.style.border = '1px solid red';
             errorMsg3.innerHTML = "    Please select a proper date.";
             errorMsg3.style.color = 'red';
@@ -64,9 +70,19 @@
             errorMsg4.innerHTML = "";
             validationCounter += 1;
         }
-        if(validationCounter === 5){ //Calling of '.addTask()' method
-            taskManager.incrementCurrentId();
+        if(validationCounter === 5){ 
+            //taskManager.incrementCurrentId();//Call for incrementing the CurrentId
+
+            //Calling out '.addTask()' method
             taskManager.addTask(nameCreator.value, taskDescrip.value, assigneeName.value, dueDateInput.value, statusSelect.value);
+
+            //Call for adding a Task -- code for testing the createTaskHtml method           
+            // taskHtml = createTaskHtml(nameCreator.value, taskDescrip.value, assigneeName.value, dueDateInput.value, statusSelect.value);
+            // console.log(taskHtml);
+            //Assigning the created Task HTML to the pre-declared variable.
+
+            taskManager.render(); //Call for render method
+
             //Resetting the form fields 
             validationCounter = 0;
             nameCreator.value = '';
@@ -74,12 +90,12 @@
             assigneeName.value = '';
             dueDateInput.value = '';
             statusSelect.value = '';
+
         }else{validationCounter = 0;}       
         console.log(taskManager.tasks);    
     }
 
-    //Adding Event Listener
-    
+    //----------------Adding Event Listener--------------------    
     saveButton.addEventListener('click',validFormFieldInput);
-    saveButton.addEventListener('click',(e)=>{e.preventDefault();})//To prevent the resetting of the webpage
+    saveButton.addEventListener('click',(e)=>{e.preventDefault();})//To prevent the resetting/reloading of the webpage
     cancelButton.addEventListener('click', (e)=>{e.preventDefault();})//To prevent the resetting of the webpage
