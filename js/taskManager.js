@@ -1,14 +1,14 @@
-function createTaskHtml(name, description, assignedTo, dueDate, status){
+function createTaskHtml(id, name, description, assignedTo, dueDate, status){
     const html = 
-        `<li class="list-group-item list_name" style="border: 1px solid purple;">
+        `<li class="list-group-item list_name" data-id="${id}"          data-loaded="true" style="border: 1px solid purple;">
             <div><label for='listnameoutput'><strong>Name:</strong> </label><output name='listnameoutput'> &nbsp;${name}</output></div>
             <div><label for='listtaskdesc'><strong>Task Description: </strong></label><output name='listtaskdesc'> &nbsp;${description}</output></div>
             <div><label for='listassigned'><strong>Assigned to:</strong> </label><output name='listassigned'> &nbsp;${assignedTo}</output></div>
             <div><label for='listduedate'><strong>Due date: </strong></label><output name='listduedate'> &nbsp;${dueDate}</output></div>
             <div><label for='liststatus'><strong>Status: </strong></label><output name='liststatus'> &nbsp;${status}</output></div>
             <section class="card_buttons">
-            <button type="submit" class="btn btn-danger     delete btn-sm shadow">Delete</button>&nbsp;&nbsp;
-            <button type="submit" class="btn btn-primary complete btn-sm shadow">Completed</button>
+            <button type="submit" class="btn btn-danger delete_btn btn-sm shadow">Delete</button>&nbsp;&nbsp;
+            <button type="submit" class="btn btn-primary complete_btn btn-sm shadow">Done</button>
         </section>
         </li>`;  
         
@@ -49,6 +49,16 @@ class TaskManager {
         
         // this._tasks.push([this._currentId, name, description, assignedTo, dueDate, status]); //code for loading the tasks array with task arrays        
     }
+    getTaskById(id){
+        let tempTaskObj;
+        for(let i=0; i < this._tasks.length; i++){
+            
+            if(parseInt(this._tasks[i].Id) === id){
+                tempTaskObj = this._tasks[i];
+            }            
+        }
+        return tempTaskObj;
+    }
     
     render(){        
         let tasksHtmlList = []; //Array for storing the task html strings
@@ -60,7 +70,7 @@ class TaskManager {
             let formattedDate = date.toLocaleDateString();
 
             //Calling createTaskHtml method and assigning the output
-            let taskHtml = createTaskHtml(arrayElement.Name, arrayElement.Description, arrayElement.AssignedTo, formattedDate, arrayElement.Status);
+            let taskHtml = createTaskHtml(arrayElement.Id, arrayElement.Name, arrayElement.Description, arrayElement.AssignedTo, formattedDate, arrayElement.Status);
 
             //Pushing the individual task html to the tasksHtmlList Array
             tasksHtmlList.push(taskHtml);
@@ -70,6 +80,7 @@ class TaskManager {
         tasksHtml = tasksHtmlList.join('\n');
         let listTaskRender = document.getElementById('taskListCard');
         listTaskRender.innerHTML=tasksHtml;       
+        
        console.log(tasksHtml);
     }
 }

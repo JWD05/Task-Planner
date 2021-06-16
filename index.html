@@ -14,7 +14,7 @@
     </header>
     <main class='grid_main_container '>
         <!-- form-start -->        
-        <form class='grid_form_container shadow col-md-3'>
+        <form class='grid_form_container shadow col-md-3' id="form_assignment">
           <div class='taskform_header'><h2>Task Planner</h2></div> 
           <hr>        
             <fieldset><!--TASK ASSIGNMENT FORM-->
@@ -46,10 +46,10 @@
                 </select>
               </div>
               <section class="form_buttons"><!--Form Buttons-->
-                <button type="submit" class="btn btn-danger btn-sm shadow" id="cancelButton">Cancel</button>
-                <button type="submit" class="btn btn-primary btn-sm shadow" id="saveButton">Save</button>
+                <button type="submit" class="btn btn-danger btn-md shadow" id="cancelButton">Cancel</button>
+                <button type="submit" class="btn btn-primary btn-md shadow" id="saveButton">Save</button>
               </section>
-              
+              <span id="tempSpan"></span>
             </fieldset>
           </form>
           <!-- form-end -->
@@ -62,13 +62,7 @@
               <ul class="list-group list-group-flush list_temp" id='taskListCard'>
                 
               </ul>
-           
-              <!-- <section class="card_buttons">
-                  <button type="submit" class="btn btn-danger delete btn-sm shadow">Delete</button>
-                  <button type="submit" class="btn btn-primary complete btn-sm shadow">Completed</button>
-              </section>    -->
-            <!-- </div> -->
-            <!-- viewcard_1_end -->
+                         
             <!-- viewcard_2_start -->
             <!-- <div class="card" style="width: 18rem;">
               <ul class="list-group list-group-flush">
@@ -80,55 +74,10 @@
               </ul>
               <section class="card_buttons">
                   <button type="submit" class="btn btn-danger delete btn-sm shadow">Delete</button>
-                  <button type="submit" class="btn btn-primary complete btn-sm shadow">Completed</button>
+                  <button type="submit" class="btn btn-primary complete btn-sm shadow complete_button">Completed</button>
               </section>   
             </div> -->
-            <!--viewcard_2_end-->
-            <!-- viewcard_3_start-->
-            <!-- <div class="card" style="width: 18rem;">
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item list_name"><label for='listnameoutput'>Name: </label><output name='listnameoutput'></output></li>
-                <li class="list-group-item list_task_desc"><label for='listtaskdesc'>Task Description: </label><output name='listtaskdesc'></ output></li>
-                <li class="list-group-item list_assigned"><label for='listassigned'>Assigned to: </label><output name='listassigned'></output></li>
-                <li class="list-group-item list_due-date" ><label for='listduedate'>Due date: </label><output name='listduedate'></output></li>
-                <li class="list-group-item list_status"><label for='liststatus'>Status: </label><output name='liststatus'></output></li>
-              </ul>
-              <section class="card_buttons">
-              <button type="submit" class="btn btn-danger delete btn-sm shadow">Delete</button>
-              <button type="submit" class="btn btn-primary complete btn-sm shadow">Completed</button>
-              </section>   
-            </div> -->
-            <!-- viewcard_3_end -->
-            <!-- viewcard_4_start -->
-            <!-- <div class="card" style="width: 18rem;">
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item list_name"><label for='listnameoutput'>Name: </label><output name='listnameoutput'></output></li>
-                <li class="list-group-item list_task_desc"><label for='listtaskdesc'>Task Description: </label><output name='listtaskdesc'></output></li>
-                <li class="list-group-item list_assigned"><label for='listassigned'>Assigned to: </label><output name='listassigned'></output></li>
-                <li class="list-group-item list_due-date" ><label for='listduedate'>Due date: </label><output name='listduedate'></output></li>
-                <li class="list-group-item list_status"><label for='liststatus'>Status: </label><output name='liststatus'></output></li>
-              </ul>
-            <section class="card_buttons">
-              <button type="submit" class="btn btn-danger delete btn-sm shadow">Delete</button>
-              <button type="submit" class="btn btn-primary complete btn-sm shadow">Completed</button>
-          </section>   
-          </div> -->
-          <!-- viewcard_4_end -->         
-          <!-- viewcard_5_start -->
-            <!-- <div class="card" style="width: 18rem;">
-              <ul class="list-group list-group-flush">
-              <li class="list-group-item list_name"><label for='listnameoutput'>Name: </label><output name='listnameoutput'></output></li>
-              <li class="list-group-item list_task_desc"><label for='listtaskdesc'>Task Description: </label><output name='listtaskdesc'></output></li>
-              <li class="list-group-item list_assigned"><label for='listassigned'>Assigned to: </label><output name='listassigned'></output></li>
-              <li class="list-group-item list_due-date" ><label for='listduedate'>Due date: </label><output name='listduedate'></output></li>
-              <li class="list-group-item list_status"><label for='liststatus'>Status: </label><output name='liststatus'></output></li>
-              </ul>
-              <section class="card_buttons">
-                  <button type="submit" class="btn btn-danger delete btn-sm shadow">Delete</button>
-                  <button type="submit" class="btn btn-primary complete btn-sm shadow">Completed</button>
-              </section>   
-            </div>   -->
-        <!-- viewcard_5_end --> 
+            
         <!-- viewcards-end -->
           </section>
           
@@ -136,7 +85,9 @@
     <footer>
 
     </footer>
+    <script src="./js/validation.js"></script>
     <script src="./js/taskManager.js"></script>
-    <script src="./js/index.js"></script>    
+    <script src="./js/index.js"></script> 
+   
 </body>
 </html>
