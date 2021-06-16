@@ -19,7 +19,7 @@ function createTaskHtml(id, name, description, assignedTo, dueDate, status){ let
             <div><label for='listtaskdesc'><strong>Task Description: </strong></label><output name='listtaskdesc'> &nbsp;${description}</output></div>
             <div><label for='listassigned'><strong>Assigned to:</strong> </label><output name='listassigned'> &nbsp;${assignedTo}</output></div>
             <div><label for='listduedate'><strong>Due date: </strong></label><output name='listduedate'> &nbsp;${dueDate}</output></div>
-            <div><label for='liststatus'><strong>Status: </strong></label><output name='liststatus'> &nbsp;${status}</output></div>
+            <div class="text-danger"><label for='liststatus' ><strong>Status: </strong></label><output name='liststatus'> &nbsp;${status}</output></div>
             <section class="card_buttons">
             <button type="submit" class="btn btn-danger delete_btn btn-sm shadow">Delete</button>&nbsp;&nbsp;
             <button type="submit" class="btn btn-primary complete_btn btn-sm shadow" style="display:none">Done</button>
