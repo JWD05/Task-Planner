@@ -132,7 +132,8 @@
     //Event Listener for the 'Done' button on the task cards.
     let taskUList = document.getElementById('taskListCard');
     taskUList.addEventListener('click', (event)=>{
-        if (event.target.classList.contains('complete_btn')){  
+        if (event.target.classList.contains('complete_btn'))
+        {  //-------Code for changing the status to 'Done'
         const parentElem = event.target.parentElement.parentElement;//accessing the grandparent of the event.target element
 
         console.log(parentElem);
@@ -140,25 +141,20 @@
         const parentId = parseInt(parentElem.dataset.id);//accessing the dataset 'id' in the grandparent element
 
         console.log(parentId);
-           // console.log(typeof parentId);
+        // console.log(typeof parentId);
 
         const selectTask = taskManager.getTaskById(parentId);
         selectTask.Status = "Done";
         //selectTask.
         console.log(selectTask.Id);
-        console.log(selectTask);    
-    //     taskManager.render(); 
-    // }
-    // if(event.target.classList.contains('complete_btn')){
-    //     const parentElem = event.target.parentElement.parentElement;//accessing the grandparent of the event.target element
+        console.log(selectTask);
 
-    //     console.log(parentElem);
-
+        //------code for removing the 'Done' button--------
         const buttonDone = parentElem.querySelectorAll("button"); 
         console.log(buttonDone);
         buttonDone[1].style.display = 'none';
         console.log(buttonDone[1]);
-       // buttonDone.class = "invisible";
+       
 
         taskManager.render(); 
     }
