@@ -1,5 +1,5 @@
     const taskManager = new TaskManager(0); //Instantiation of class TaskManager
-    console.log(taskManager.tasks);   
+    //console.log(taskManager.tasks);   
     let taskHtml; //Variable for storing the task html object.
     
     //-----------------Grabbing the html elements--------------------
@@ -28,7 +28,7 @@
         //console.log(`tdate = new Date() gives - ${tdate}`);
         //console.log(`The date input using Date.parse(bdate) was - ${Date.parse(bdate)}`);
         //console.log(`bdate = new Date(dueDateInput.value) gives - ${bdate}`);
-        console.log(`The d = new Date(1623456784332) gives - ${d}`);
+        //console.log(`The d = new Date(1623456784332) gives - ${d}`);
         if(nameCreator.value.length < 5){ //Validation of Name field entry
             nameCreator.style.border = '1px solid red';
             errorMsg.innerHTML = "    The entry should be of 5 characters or more.";
@@ -88,7 +88,7 @@
         }else{
             validationCounter = 0; //Resetting the counter as the validation is not complete.
         }         
-        console.log(taskManager.tasks);         
+        //console.log(taskManager.tasks);         
     }
     
     //----------------Cancel Button Activated Function----------
@@ -131,19 +131,15 @@
 
     //Event Listener for the 'Done' button on the task cards.
     let taskUList = document.getElementById('taskListCard');
-    taskUList.addEventListener('click', (event)=>{if (event.target.classList.contains('complete_btn')){  
-        
-        //event.target.nodeName === 'BUTTON' works fine
-        //console.log(event.target.nodeName);
-        //console.log(`Hi I am here in the Task List`);
+    taskUList.addEventListener('click', (event)=>{
+        if (event.target.classList.contains('complete_btn')){  
+        const parentElem = event.target.parentElement.parentElement;//accessing the grandparent of the event.target element
 
-        const parentElem = event.target.parentElement.parentElement;
+        console.log(parentElem);
 
-       // console.log(`The parent element is ${parentElem.nodeName}`);
+        const parentId = parseInt(parentElem.dataset.id);//accessing the dataset 'id' in the grandparent element
 
-        const parentId = parseInt(parentElem.dataset.id);
-
-            //console.log(parentId);
+        console.log(parentId);
            // console.log(typeof parentId);
 
         const selectTask = taskManager.getTaskById(parentId);
@@ -151,5 +147,13 @@
         //selectTask.
         console.log(selectTask.Id);
         console.log(selectTask);
-        taskManager.render();        
+             
+        
+        const buttonDone = parentElem.querySelectorAll("button"); 
+        console.log(buttonDone);
+        buttonDone[1].style.display = 'none';
+        console.log(buttonDone[1]);
+       // buttonDone.class = "invisible";
+
+        taskManager.render(); 
     }});
