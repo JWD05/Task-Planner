@@ -146,9 +146,14 @@
         selectTask.Status = "Done";
         //selectTask.
         console.log(selectTask.Id);
-        console.log(selectTask);
-             
-        
+        console.log(selectTask);    
+    //     taskManager.render(); 
+    // }
+    // if(event.target.classList.contains('complete_btn')){
+    //     const parentElem = event.target.parentElement.parentElement;//accessing the grandparent of the event.target element
+
+    //     console.log(parentElem);
+
         const buttonDone = parentElem.querySelectorAll("button"); 
         console.log(buttonDone);
         buttonDone[1].style.display = 'none';
@@ -156,4 +161,5 @@
        // buttonDone.class = "invisible";
 
         taskManager.render(); 
-    }});
+    }
+});

@@ -1,5 +1,6 @@
-function createTaskHtml(id, name, description, assignedTo, dueDate, status){
-    const html = 
+function createTaskHtml(id, name, description, assignedTo, dueDate, status){ let html = "";
+    if(status!= 'Done'){
+        html = 
         `<li class="list-group-item list_name" data-id="${id}"          data-loaded="true" style="border: 1px solid purple;">
             <div><label for='listnameoutput'><strong>Name:</strong> </label><output name='listnameoutput'> &nbsp;${name}</output></div>
             <div><label for='listtaskdesc'><strong>Task Description: </strong></label><output name='listtaskdesc'> &nbsp;${description}</output></div>
@@ -11,6 +12,21 @@ function createTaskHtml(id, name, description, assignedTo, dueDate, status){
             <button type="submit" class="btn btn-primary complete_btn btn-sm shadow">Done</button>
         </section>
         </li>`;  
+    }
+    else{
+        html = `<li class="list-group-item list_name" data-id="${id}"   data-loaded="true" style="border: 1px solid purple;">
+            <div><label for='listnameoutput'><strong>Name:</strong> </label><output name='listnameoutput'> &nbsp;${name}</output></div>
+            <div><label for='listtaskdesc'><strong>Task Description: </strong></label><output name='listtaskdesc'> &nbsp;${description}</output></div>
+            <div><label for='listassigned'><strong>Assigned to:</strong> </label><output name='listassigned'> &nbsp;${assignedTo}</output></div>
+            <div><label for='listduedate'><strong>Due date: </strong></label><output name='listduedate'> &nbsp;${dueDate}</output></div>
+            <div><label for='liststatus'><strong>Status: </strong></label><output name='liststatus'> &nbsp;${status}</output></div>
+            <section class="card_buttons">
+            <button type="submit" class="btn btn-danger delete_btn btn-sm shadow">Delete</button>&nbsp;&nbsp;
+            <button type="submit" class="btn btn-primary complete_btn btn-sm shadow" style="display:none">Done</button>
+        </section>
+        </li>`;  
+    }
+    
         
     return html;
 }
