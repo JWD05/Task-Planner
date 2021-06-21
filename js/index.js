@@ -1,5 +1,7 @@
     const taskManager = new TaskManager(0); //Instantiation of class TaskManager
     //console.log(taskManager.tasks);   
+    taskManager.load();
+    taskManager.render();
     let taskHtml; //Variable for storing the task html object.
     
     //-----------------Grabbing the html elements--------------------
@@ -76,6 +78,9 @@
             //Calling out '.addTask()' method
             taskManager.addTask(nameCreator.value, taskDescrip.value, assigneeName.value, dueDateInput.value, statusSelect.value);
 
+            //-------code for saving the tasks to the Local storage ---------
+            const localStorage = taskManager.save();
+        
             taskManager.render(); //Call for render method
 
             validationCounter = 0;
@@ -129,33 +134,44 @@
     cancelButton.addEventListener('click', (e)=>{e.preventDefault();})
     //To prevent the resetting of the webpage
 
-    //Event Listener for the 'Done' button on the task cards.
+//------------------------------------------------------------------------
+    //Event Listener for the 'Done' and 'Delete' buttons on the task cards.
     let taskUList = document.getElementById('taskListCard');
+
     taskUList.addEventListener('click', (event)=>{
+        console.log(event.target.classList);
         if (event.target.classList.contains('complete_btn'))
         {  //-------Code for changing the status to 'Done'
-        const parentElem = event.target.parentElement.parentElement;//accessing the grandparent of the event.target element
+            const parentElem = event.target.parentElement.parentElement;//accessing the grandparent of the event.target element
+            const parentId = parseInt(parentElem.dataset.id);//accessing the dataset 'id' in the grandparent element
+            //console.log(parentElem); //console.log(parentId); //console.log(typeof parentId);
+            
+            const selectTask = taskManager.getTaskById(parentId);
+            selectTask.Status = "Done";     
+            //console.log(selectTask.Id);
+            //console.log(selectTask);
 
-        console.log(parentElem);
-
-        const parentId = parseInt(parentElem.dataset.id);//accessing the dataset 'id' in the grandparent element
-
-        console.log(parentId);
-        // console.log(typeof parentId);
-
-        const selectTask = taskManager.getTaskById(parentId);
-        selectTask.Status = "Done";
-        //selectTask.
-        console.log(selectTask.Id);
-        console.log(selectTask);
-
-        //------code for removing the 'Done' button--------
-        const buttonDone = parentElem.querySelectorAll("button"); 
-        console.log(buttonDone);
-        buttonDone[1].style.display = 'none';
-        console.log(buttonDone[1]);
+            //------code for removing the 'Done' button--------
+            const buttonDone = parentElem.querySelectorAll("button"); 
+            console.log(buttonDone);
+            buttonDone[1].style.display = 'none';
+            console.log(buttonDone[1]);
        
+            //-------code for saving the tasks to the Local storage ---------
+            taskManager.save();
+        
+            //Final call for rendering the updated Taskslist array
+            taskManager.render(); 
+        }
+    
+        else if (event.target.classList.contains('delete_btn'))
+        {
+            const parentElem = event.target.parentElement.parentElement;//accessing the grandparent of the event.target element
+            const parentId = parseInt(parentElem.dataset.id);//accessing the dataset 'id' in the grandparent element
+            taskManager.deleteTask(parentId);//code for deleting a task with particular 'id'.
+            taskManager.save(); //code for saving the tasks to the Local storage
+            taskManager.render();//Final call for rendering the updated Taskslist array
+        }
+    });
 
-        taskManager.render(); 
-    }
-});
+    
